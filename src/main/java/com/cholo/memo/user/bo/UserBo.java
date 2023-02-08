@@ -3,6 +3,7 @@ package com.cholo.memo.user.bo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.cholo.memo.common.EncryptUtils;
 import com.cholo.memo.user.dao.UserDAO;
 
 @Service
@@ -17,7 +18,10 @@ public class UserBo {
 			, String name
 			, String email) {
 		
-		return userDAO.insertUser(loginId, password, name, email);
+		//암호화
+		String encrytPassword = EncryptUtils.md5(password);      
+		
+		return userDAO.insertUser(loginId, encrytPassword, name, email);
 		
 	}
 }
