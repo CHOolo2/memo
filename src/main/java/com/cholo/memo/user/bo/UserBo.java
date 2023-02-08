@@ -5,7 +5,6 @@ import org.springframework.stereotype.Service;
 
 import com.cholo.memo.common.EncryptUtils;
 import com.cholo.memo.user.dao.UserDAO;
-import com.cholo.memo.user.model.User;
 
 @Service
 public class UserBo {
@@ -24,11 +23,5 @@ public class UserBo {
 		
 		return userDAO.insertUser(loginId, encrytPassword, name, email);
 		
-	}
-	public User getUser(String loginId, String password) {
-		
-		//암호화
-		String encryptPassword=  EncryptUtils.md5(password);
-		return userDAO.selectUser(loginId, encryptPassword);
 	}
 }
